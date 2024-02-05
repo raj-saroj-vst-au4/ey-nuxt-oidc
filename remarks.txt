@@ -1,0 +1,1 @@
+1) For post routes one needs xsrf token to be passed in api headers
