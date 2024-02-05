@@ -169,9 +169,9 @@ const userPincode = ref(null);
 
 const fetchCountries = async () => {
   try {
-    const response = await fetch("/api/countries");
-    const countriesjson = await response.json();
-    countries.value = countriesjson.countries;
+    const response = await useAuthFetch("/api/getcountries");
+    // const countriesjson = await response.json();
+    countries.value = response.countries;
   } catch (error) {
     console.error("Error fetching countries:", error);
   }
@@ -179,9 +179,8 @@ const fetchCountries = async () => {
 
 const fetchStates = async (country) => {
   try {
-    const response = await fetch(`/api/states/${country}`);
-    const statesjson = await response.json();
-    collegestates.value = statesjson.states;
+    const response = await useAuthFetch(`/api/getstates/${country}`);
+    collegestates.value = response.states;
   } catch (error) {
     console.error("Error fetching states:", error);
   }
@@ -189,9 +188,9 @@ const fetchStates = async (country) => {
 
 const fetchColleges = async (country, state) => {
   try {
-    const res = await fetch(`/api/colleges/${country}/${state}`);
-    const clg = await res.json();
-    colleges.value = clg.colleges;
+    const res = await useAuthFetch(`/api/getcolleges/${country}/${state}`);
+    // const clg = await res.json();
+    colleges.value = res.colleges;
   } catch (err) {
     console.log("error fetching colleges:", err);
   }
@@ -199,8 +198,7 @@ const fetchColleges = async (country, state) => {
 
 const fetchDepartments = async () => {
   try {
-    const depresponse = await fetch("/api/departments");
-    departments.value = await depresponse.json();
+    departments.value = await useAuthFetch("/api/getdepartments");
   } catch (error) {
     console.error("Error fetching departments:", error);
   }
@@ -208,17 +206,16 @@ const fetchDepartments = async () => {
 
 const fetchDesignations = async () => {
   try {
-    const desresponse = await fetch("/api/designations");
-    designations.value = await desresponse.json();
+    designations.value = await useAuthFetch("/api/getdesignations");
   } catch (error) {
     console.error("Error fetching designations:", error);
   }
 };
 
 onMounted(() => {
-  fetchCountries();
-  fetchDepartments();
-  fetchDesignations();
+  fetchCountries()
+    .then(() => fetchDepartments())
+    .then(() => fetchDesignations());
 });
 
 const onCountrySelected = () => {
