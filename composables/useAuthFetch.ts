@@ -5,23 +5,27 @@ export async function useAuthFetch<T>(
   options: UseFetchOptions<T> = {}
 ) {
   let headers: any = {};
+  const { $oidc }: any = useNuxtApp();
+
+  await $fetch("/api/token");
   let xsrf_token = useCookie("XSRF-TOKEN").value;
   let session_token = useCookie("eyantraapi_session").value;
   const access_token = useCookie("access_token").value;
 
-  if (!access_token) {
-    console.log("No access token");
+  if (process.server) {
+    headers = {
+      ...headers,
+      ...useRequestHeaders(["referer", "cookie"]),
+    };
   }
 
-  if (!xsrf_token || !session_token) {
-    console.log("NO session or xsrf token, getting one");
-    await $fetch("/api/token", {
-      method: "GET",
-    });
-    xsrf_token = useCookie("XSRF-TOKEN").value;
+  if (!access_token) {
+    console.log("Missing Access Token");
+    $oidc.login("/");
   }
+
   return await $fetch(path, {
-    ...options,
+    ...(options as any),
     headers: {
       "X-XSRF-TOKEN": xsrf_token,
       Authorization: `Bearer ${access_token}`,

@@ -1,7 +1,12 @@
 <template>
-  <NavBar />
-  <slot />
+  <SideBar />
+  <div class="p-4 sm:ml-64 bg-gray-900 h-screen">
+    <slot />
+  </div>
 </template>
 <script setup>
-import NavBar from "./../components/NavBar";
+import SideBar from "~/components/SideBar.vue";
+definePageMeta({
+  middleware: ["auth"],
+});
 </script>

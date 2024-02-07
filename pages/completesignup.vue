@@ -2,14 +2,14 @@
   <Head>
     <title>Complete Registration</title>
   </Head>
-  <div class="min-h-screen pt-20 bg-gray-900">
+  <div class="min-h-screen py-16 bg-gray-900">
     <div class="container mx-auto">
       <div
         class="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden"
       >
         <div
           class="w-full lg:w-1/2 flex flex-col items-center justify-between p-12 bg-no-repeat bg-cover bg-center"
-          style="background-image: url('/robotics2.png')"
+          style="background-image: url('/images/robotics2.png')"
         >
           <h1 class="text-white text-3xl mb-3">Welcome Back</h1>
           <div>
@@ -150,7 +150,9 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-
+definePageMeta({
+  layout: "auth-blank",
+});
 const countries = ref([]);
 const collegestates = ref([]);
 const colleges = ref([]);
@@ -235,7 +237,7 @@ const onStateSelected = () => {
 
 const submitForm = async () => {
   try {
-    const response = await fetch("/api/regcomplete", {
+    const response = await useAuthFetch("/api/regcompletion", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -252,19 +254,14 @@ const submitForm = async () => {
       }),
     });
 
-    if (!response.ok) {
-      console.log("Backend down");
-    }
-    const data = await response.json();
-    console.log(data);
-    if (data.status == 200) {
+    if (response.status == 200) {
       console.log("form submitted");
       validationError.value = null;
-    } else if (data.status == 401) {
-      console.log(data);
+    } else if (response.status == 401) {
+      console.log(response);
     } else {
-      validationError.value = Object.values(data.errors)[0][0];
-      console.log("Return data ", Object.values(data.errors)[0][0]);
+      validationError.value = Object.values(response.errors)[0][0];
+      console.log("server response ", Object.values(response.errors)[0][0]);
     }
   } catch (error) {
     console.error(error);

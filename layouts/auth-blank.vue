@@ -1,9 +1,9 @@
 <template>
-  <v-app>
+  <div class="h-screen bg-gray-900">
     <slot />
-  </v-app>
+  </div>
 </template>
-<script>
+<script setup>
 definePageMeta({
   middleware: ["auth"],
 });
