@@ -206,7 +206,7 @@
 
         <button
           class="items-center rounded-2xl hover:bg-gray-700"
-          @click="$oidc.logout"
+          @click="signOut"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -230,4 +230,9 @@
 </template>
 <script setup>
 const { $oidc } = useNuxtApp();
+const signOut = async () => {
+  console.log("Logging Out");
+  await navigateTo("/logout", { external: true });
+  // await $oidc.logout();
+};
 </script>

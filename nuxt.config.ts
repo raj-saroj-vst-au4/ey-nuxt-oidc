@@ -15,6 +15,9 @@ export default defineNuxtConfig({
         to: `${process.env.NUXT_BACKEND_URL}/api/**`,
       },
     },
+    "/logout": {
+      redirect: `${process.env.NUXT_OPENID_CONNECT_OP_ISSUER}/protocol/openid-connect/logout?post_logout_redirect_uri=${process.env.NUXT_APP_DOMAIN}&client_id=${process.env.NUXT_OPENID_CONNECT_OP_CLIENT_ID}`,
+    },
   },
   openidConnect: {
     addPlugin: true,

@@ -1,10 +1,10 @@
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.server) {
-    console.log("Server Side");
-    return "server side";
+    return;
   }
   const { $oidc }: any = useNuxtApp();
   if (!$oidc.isLoggedIn) {
+    // $oidc.login("/");
     $oidc.login(to.fullPath);
   }
 });
