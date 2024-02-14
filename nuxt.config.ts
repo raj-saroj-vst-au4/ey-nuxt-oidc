@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["nuxt-openid-connect"],
+  modules: ["nuxt-openid-connect", "@tresjs/nuxt"],
   css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {

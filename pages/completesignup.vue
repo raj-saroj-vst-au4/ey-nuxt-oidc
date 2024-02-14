@@ -76,7 +76,7 @@
                   v-if="selectedCollegeState"
                   v-for="college in colleges"
                   :key="college.id"
-                  :value="college.college_name"
+                  :value="college.id"
                 >
                   {{ college.college_name }}
                 </option>
@@ -92,7 +92,7 @@
                 <option
                   v-for="designation in designations"
                   :key="designation.name"
-                  :value="designation.name"
+                  :value="designation.id"
                 >
                   {{ designation.name }}
                 </option>
@@ -105,7 +105,7 @@
                 <option
                   v-for="department in departments"
                   :key="department.id"
-                  :value="department.name"
+                  :value="department.id"
                 >
                   {{ department.name }}
                 </option>
@@ -152,12 +152,14 @@
 import { ref, onMounted } from "vue";
 definePageMeta({
   layout: "auth-blank",
+  middleware: ["auth"],
 });
 const countries = ref([]);
 const collegestates = ref([]);
 const colleges = ref([]);
 const departments = ref([]);
 const designations = ref([]);
+const { $oidc } = useNuxtApp();
 
 const validationError = ref(null);
 const selectedCountry = ref(null);
@@ -236,14 +238,30 @@ const onStateSelected = () => {
 };
 
 const submitForm = async () => {
+  // console.log(
+  //   JSON.stringify({
+  //     name: userFname.value,
+  //     username: $oidc.user.preferred_username,
+  //     email: $oidc.user.email,
+  //     country: selectedCountry.value,
+  //     state: selectedCollegeState.value,
+  //     college: selectedCollege.value,
+  //     department: selectedDepartment.value,
+  //     designation: selectedDesignation.value,
+  //     address: userAddress.value,
+  //     pin: userPincode.value,
+  //   })
+  // );
   try {
-    const response = await useAuthFetch("/api/regcompletion", {
+    const response = await useAuthFetch("/api/regsubmit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: userFname.value,
+        username: $oidc.user.preferred_username,
+        email: $oidc.user.email,
         country: selectedCountry.value,
         state: selectedCollegeState.value,
         college: selectedCollege.value,
@@ -257,6 +275,7 @@ const submitForm = async () => {
     if (response.status == 200) {
       console.log("form submitted");
       validationError.value = null;
+      $router.push("/home");
     } else if (response.status == 401) {
       console.log(response);
     } else {
@@ -265,7 +284,6 @@ const submitForm = async () => {
     }
   } catch (error) {
     console.error(error);
-    // Handle error, e.g., show an error message
   }
 };
 </script>

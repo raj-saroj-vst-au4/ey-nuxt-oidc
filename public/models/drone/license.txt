@@ -1,0 +1,11 @@
+Model Information:
+* title:	Inside Drone
+* source:	https://sketchfab.com/3d-models/inside-drone-d38af0afb72343f69eed6da6457df11b
+* author:	freakering (https://sketchfab.com/francescoriccardi)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Inside Drone" (https://sketchfab.com/3d-models/inside-drone-d38af0afb72343f69eed6da6457df11b) by freakering (https://sketchfab.com/francescoriccardi) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
