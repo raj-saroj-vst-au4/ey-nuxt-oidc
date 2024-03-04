@@ -18,7 +18,7 @@
         <span
           v-if="$oidc.isLoggedIn"
           class="text-2xl font-semibold whitespace-nowrap"
-          >Welcome back, {{ $oidc.user.name }}!</span
+          >Welcome back, {{ $oidc.user.name }} !</span
         >
         <button
           v-else

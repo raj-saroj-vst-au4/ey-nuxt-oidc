@@ -1,0 +1,3 @@
+<template>
+  <CollegeTable />
+</template>
