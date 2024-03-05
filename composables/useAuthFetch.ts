@@ -21,7 +21,8 @@ export async function useAuthFetch<T>(
 
   if (!access_token) {
     console.log("Missing Access Token");
-    $oidc.login("/");
+    const path = window.location.pathname
+    $oidc.login(path);
   }
 
   return await $fetch(path, {

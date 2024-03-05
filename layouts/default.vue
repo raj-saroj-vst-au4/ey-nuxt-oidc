@@ -1,6 +1,6 @@
 <template>
   <SideBar />
-  <div class="p-4 sm:ml-64 bg-gray-900 h-screen">
+  <div class="p-4 sm:ml-64 bg-gray-900 min-h-screen">
     <slot />
   </div>
 </template>
