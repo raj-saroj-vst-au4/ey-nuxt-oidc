@@ -82,7 +82,7 @@
         </video>
       </div>
     </section>
-    <section ref="third">
+    <section class="snap-start h-screen">
       <div
         data-aos="zoom-in-down"
         class="relative flex items-center justify-center h-screen"
@@ -108,19 +108,19 @@
             class="grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0"
           >
             <img
-              src="#"
+              src="/images/lib1.png"
               alt=""
               class="w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full"
               loading="lazy"
             />
             <img
-              src="#"
+              src="/images/lib2.png"
               alt=""
               class="hidden w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32"
               loading="lazy"
             />
             <img
-              src="#"
+              src="/images/lib3.png"
               alt=""
               class="hidden w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32"
               loading="lazy"
@@ -201,6 +201,23 @@
         </div>
       </div>
     </section>
+    <!-- <div class="absolute z-20 bottom-10 right-10">
+      <button
+        @click="togglePopover"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        chat
+      </button>
+       <div v-if="showPopover" class="...">
+        <div class="...">
+          <h3 class="...">Popover click</h3>
+        </div>
+        <div class="...">
+          <p>And here's some amazing content. It's very engaging. Right?</p>
+        </div>
+        <div class="..."></div>
+      </div> 
+    </div> -->
   </div>
 </template>
 
@@ -210,6 +227,8 @@ definePageMeta({
 });
 // Access the plugin through the composable
 const { $oidc } = useNuxtApp();
+const showPopover = ref(false);
+
 const gl = {
   clearColor: "#212121",
   shadows: true,
@@ -226,14 +245,18 @@ onLoop(({ delta, elapsed }) => {
 });
 const checkSignup = async () => {
   if ($oidc.isLoggedIn) {
-    console.log("auth user, sending data");
+    // console.log("auth user, sending data");
     const response = await useAuthFetch("/api/protected", {
       method: "POST",
     });
     console.log(response);
-    $router.push("/completesignup");
+    // $router.push("/completesignup");
   } else {
     $oidc.login();
   }
+};
+
+const togglePopover = () => {
+  showPopover.value = !showPopover.value;
 };
 </script>
