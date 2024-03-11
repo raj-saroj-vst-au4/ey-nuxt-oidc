@@ -227,6 +227,7 @@ definePageMeta({
 });
 // Access the plugin through the composable
 const { $oidc } = useNuxtApp();
+const router = useRouter();
 const showPopover = ref(false);
 
 const gl = {
@@ -249,8 +250,9 @@ const checkSignup = async () => {
     const response = await useAuthFetch("/api/protected", {
       method: "POST",
     });
-    console.log(response);
-    // $router.push("/completesignup");
+    if (response) {
+      router.push("/home");
+    }
   } else {
     $oidc.login();
   }
