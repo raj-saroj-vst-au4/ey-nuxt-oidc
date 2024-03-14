@@ -16,7 +16,7 @@
         class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse dark:text-white"
       >
         <span
-          v-if="$oidc.isLoggedIn"
+          v-if="$oidc.isLoggedIn && $oidc.user.name"
           class="text-2xl font-semibold whitespace-nowrap"
           >Welcome back, {{ $oidc.user.name }} !</span
         >

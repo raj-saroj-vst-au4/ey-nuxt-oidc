@@ -156,6 +156,7 @@ definePageMeta({
   layout: "auth-blank",
   middleware: ["auth"],
 });
+const router = useRouter();
 const countries = ref([]);
 const collegestates = ref([]);
 const colleges = ref([]);
@@ -218,6 +219,22 @@ const fetchDesignations = async () => {
   }
 };
 
+const checkSignup = async () => {
+  if ($oidc.isLoggedIn) {
+    // console.log("auth user, sending data");
+    const response = await useAuthFetch("/api/protected", {
+      method: "POST",
+    });
+    if (response && response.signup) {
+      console.log(response.signup);
+      router.push("/home");
+    }
+  } else {
+    $oidc.login();
+  }
+};
+
+onBeforeMount(checkSignup);
 onMounted(() => {
   fetchCountries()
     .then(() => fetchDepartments())
