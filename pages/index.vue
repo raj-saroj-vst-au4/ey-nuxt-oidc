@@ -1,5 +1,9 @@
 <template>
   <div class="snap-y snap-mandatory h-screen no-scrollbar">
+    <!-- chatbot -->
+    <div class="absolute z-20 bottom-24 right-32">
+      <Chatrobo @click="toggleChatbox" class="hover:cursor-pointer" />
+    </div>
     <section class="snap-start flex flex-col items-center justify-end h-screen">
       <TresCanvas v-bind="gl">
         <TresPerspectiveCamera
@@ -19,6 +23,7 @@
         />
         <TresAmbientLight :intensity="8" />
       </TresCanvas>
+
       <div
         data-aos="zoom-in-up"
         class="z-20 mb-16 font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 to-50% to-slate-200"
@@ -224,7 +229,7 @@
             <h1
               class="mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white"
             >
-              We Provide all the components you need
+              Get all the components you need
             </h1>
             <p
               class="text-sm leading-4 font-medium text-white sm:text-slate-500 dark:sm:text-slate-400"
@@ -329,6 +334,207 @@
         </div>
       </div>
     </section>
+    <section class="snap-start h-screen flex items-center">
+      <div
+        class="antialiased bg-gradient-to-b flex flex-col font-sans from-black items-stretch justify-center h-screen p-2 to-gray-900 sm:flex-row sm:items-center"
+      >
+        <div
+          class="flex flex-col flex-grow items-stretch max-w-2xl min-w-md w-full sm:flex-row sm:h-72 sm:overflow-hidden"
+        >
+          <div
+            class="cursor-pointer duration-700 ease-in-out flex-grow m-2 min-h-14 min-w-14 overflow-hidden pane relative rounded-3xl transition-all active"
+          >
+            <div
+              class="absolute background bg-center bg-cover bg-red-500 bg-red-img bg-no-repeat duration-700 ease-in-out inset-0 scale-105 transition-all z-10"
+            ></div>
+            <div
+              class="absolute bg-gradient-to-b bottom-0 duration-700 ease-in-out from-transparent h-1/2 inset-x-0 opacity-0 shadow to-black transform transition-all translate-y-1/2 z-20"
+            ></div>
+            <div
+              class="absolute bottom-0 duration-700 ease-in-out flex label left-0 mb-2 ml-3 sm:mb-3 sm:ml-2 transition-all z-30"
+            >
+              <div
+                class="bg-gray-900 flex h-10 icon items-center justify-center mr-3 rounded-full text-red-500 w-10"
+              >
+                <i class="fas fa-walking"></i>
+              </div>
+              <div
+                class="content flex flex-col justify-center leading-tight text-white whitespace-pre"
+              >
+                <div
+                  class="ease-in-out font-bold duration-700 opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Imagine
+                </div>
+                <div
+                  class="delay-100 duration-700 ease-in-out opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Chase your dreams
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="cursor-pointer duration-700 ease-in-out flex-grow m-2 min-h-14 min-w-14 overflow-hidden pane relative rounded-3xl transition-all"
+          >
+            <div
+              class="absolute background bg-center bg-cover bg-yellow-500 bg-yellow-img bg-no-repeat duration-700 ease-in-out inset-0 scale-105 transition-all z-10"
+            ></div>
+            <div
+              class="absolute bg-gradient-to-b bottom-0 duration-700 ease-in-out from-transparent h-1/2 inset-x-0 opacity-0 shadow to-black transform transition-all translate-y-1/2 z-20"
+            ></div>
+            <div
+              class="absolute bottom-0 duration-700 ease-in-out flex label left-0 mb-2 ml-3 sm:mb-3 sm:ml-2 transition-all z-30"
+            >
+              <div
+                class="bg-gray-900 flex h-10 icon items-center justify-center mr-3 rounded-full text-yellow-500 w-10"
+              >
+                <i class="fas fa-apple-alt"></i>
+              </div>
+              <div
+                class="content flex flex-col justify-center leading-tight text-white whitespace-pre"
+              >
+                <div
+                  class="ease-in-out font-bold duration-700 opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Build
+                </div>
+                <div
+                  class="delay-100 duration-700 ease-in-out opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Realize your vision
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="cursor-pointer duration-700 ease-in-out flex-grow m-2 min-h-14 min-w-14 overflow-hidden pane relative rounded-3xl transition-all"
+          >
+            <div
+              class="absolute background bg-center bg-cover bg-green-500 bg-green-img bg-no-repeat duration-700 ease-in-out inset-0 scale-105 transition-all z-10"
+            ></div>
+            <div
+              class="absolute bg-gradient-to-b bottom-0 duration-700 ease-in-out from-transparent h-1/2 inset-x-0 opacity-0 shadow to-black transform transition-all translate-y-1/2 z-20"
+            ></div>
+            <div
+              class="absolute bottom-0 duration-700 ease-in-out flex label left-0 mb-2 ml-3 sm:mb-3 sm:ml-2 transition-all z-30"
+            >
+              <div
+                class="bg-gray-900 flex h-10 icon items-center justify-center mr-3 rounded-full text-green-500 w-10"
+              >
+                <i class="fas fa-tree"></i>
+              </div>
+              <div
+                class="content flex flex-col justify-center leading-tight text-white whitespace-pre"
+              >
+                <div
+                  class="ease-in-out font-bold duration-700 opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Explore
+                </div>
+                <div
+                  class="delay-100 duration-700 ease-in-out opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Discover the world
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="cursor-pointer duration-700 ease-in-out flex-grow m-2 min-h-14 min-w-14 overflow-hidden pane relative rounded-3xl transition-all"
+          >
+            <div
+              class="absolute background bg-center bg-cover bg-blue-500 bg-blue-img bg-no-repeat duration-700 ease-in-out inset-0 scale-105 transition-all z-10"
+            ></div>
+            <div
+              class="absolute bg-gradient-to-b bottom-0 duration-700 ease-in-out from-transparent h-1/2 inset-x-0 opacity-0 shadow to-black transform transition-all translate-y-1/2 z-20"
+            ></div>
+            <div
+              class="absolute bottom-0 duration-700 ease-in-out flex label left-0 mb-2 ml-3 sm:mb-3 sm:ml-2 transition-all z-30"
+            >
+              <div
+                class="bg-gray-900 flex h-10 icon items-center justify-center mr-3 rounded-full text-blue-500 w-10"
+              >
+                <i class="fas fa-tint"></i>
+              </div>
+              <div
+                class="content flex flex-col justify-center leading-tight text-white whitespace-pre"
+              >
+                <div
+                  class="ease-in-out font-bold duration-700 opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Adapt
+                </div>
+                <div
+                  class="delay-100 duration-700 ease-in-out opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Embrace the times
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="cursor-pointer duration-700 ease-in-out flex-grow m-2 min-h-14 min-w-14 overflow-hidden pane relative rounded-3xl transition-all"
+          >
+            <div
+              class="absolute background bg-center bg-cover bg-purple-500 bg-purple-img bg-no-repeat duration-700 ease-in-out inset-0 scale-105 transition-all z-10"
+            ></div>
+            <div
+              class="absolute bg-gradient-to-b bottom-0 duration-700 ease-in-out from-transparent h-1/2 inset-x-0 opacity-0 shadow to-black transform transition-all translate-y-1/2 z-20"
+            ></div>
+            <div
+              class="absolute bottom-0 duration-700 ease-in-out flex label left-0 mb-2 ml-3 sm:mb-3 sm:ml-2 transition-all z-30"
+            >
+              <div
+                class="bg-gray-900 flex h-10 icon items-center justify-center mr-3 rounded-full text-purple-500 w-10"
+              >
+                <i class="fas fa-palette"></i>
+              </div>
+              <div
+                class="content flex flex-col justify-center leading-tight text-white whitespace-pre"
+              >
+                <div
+                  class="ease-in-out font-bold duration-700 opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Inspire
+                </div>
+                <div
+                  class="delay-100 duration-700 ease-in-out opacity-0 relative transform transition-all translate-x-8"
+                >
+                  Share your potential
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="text-gray-600 body-font relative h-full">
+      <div class="absolute inset-0 bg-gray-300">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="map"
+          scrolling="no"
+          src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4e-Yantra+(e-Yantra)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+          style=""
+        ></iframe>
+      </div>
+      <div class="container md:px-5 py-12 mx-auto flex">
+        <div
+          class="lg:w-1/3 md:w-1/2 rounded-xl flex flex-col sm:ml-auto mt-20 w-3/5 relative z-10 shadow-md"
+        >
+          <InitiateForm />
+        </div>
+      </div>
+    </section>
     <!-- <div class="absolute z-20 bottom-10 right-10">
       <button
         @click="togglePopover"
@@ -373,7 +579,7 @@ onLoop(({ delta, elapsed }) => {
   }
 });
 const checkSignup = async () => {
-  if ($oidc.isLoggedIn) {
+  if ($oidc.isLoggedIn && $oidc.user) {
     // console.log("auth user, sending data");
     const response = await useAuthFetch("/api/protected", {
       method: "POST",

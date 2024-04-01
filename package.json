@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/image": "^1.4.0",
     "autoprefixer": "^10.4.17",
     "nuxt": "^3.10.0",
     "nuxt-aos": "^1.2.3",

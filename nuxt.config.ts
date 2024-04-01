@@ -1,7 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["nuxt-openid-connect", "@tresjs/nuxt", "nuxt-aos"],
+  app: {
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/favicon.ico",
+        },
+      ],
+      title: "eYantra | eLSI",
+    },
+  },
+  modules: ["nuxt-openid-connect", "@tresjs/nuxt", "nuxt-aos", "@nuxt/image"],
   css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {

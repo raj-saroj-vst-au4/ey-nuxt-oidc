@@ -1,6 +1,7 @@
 <template>
   <nav
-    class="fixed w-4/5 z-30 left-[10%] top-8 rounded-3xl bg-slate-700 border-gray-200 dark:border-gray-600"
+    class="navigation fixed w-4/5 z-30 left-[10%] top-8 rounded-3xl bg-slate-700 border-gray-200 dark:border-gray-600"
+    :class="{ hidden: !isNavbarVisible }"
   >
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
@@ -34,4 +35,27 @@
 </template>
 <script setup>
 const { $oidc } = useNuxtApp();
+const isNavbarVisible = ref(true);
+
+let lastScrollTop = 0;
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+function handleScroll() {
+  const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+  if (currentScrollTop > lastScrollTop && currentScrollTop > 0) {
+    isNavbarVisible.value = false;
+  } else {
+    isNavbarVisible.value = true;
+  }
+
+  lastScrollTop = currentScrollTop;
+}
 </script>
