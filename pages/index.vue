@@ -26,7 +26,7 @@
 
       <div
         data-aos="zoom-in-up"
-        class="z-20 mb-16 font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 to-50% to-slate-200"
+        class="z-20 mb-16 font-extrabold text-center text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 to-50% to-slate-200"
       >
         Revolutionize learning with e-Yantra Competitions
         <span
@@ -552,6 +552,9 @@
         <div class="..."></div>
       </div> 
     </div> -->
+    <section class="relative z-20 overflow-hidden bg-dark pt-20 pb-8">
+      <FaqSec />
+    </section>
   </div>
 </template>
 
